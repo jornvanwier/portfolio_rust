@@ -2,10 +2,22 @@
 #![plugin(rocket_codegen)]
 
 extern crate rocket;
+extern crate rocket_contrib;
+extern crate serde_json;
+#[macro_use] extern crate serde_derive;
+
+use rocket_contrib::Template;
+
+#[derive(Debug, Serialize)]
+struct Page {
+    title: &'static str
+}
 
 #[get("/")]
-fn sup() -> &'static str {
-    "Sup"
+fn sup() -> Template {
+    let context = Page{title: "test"};
+
+    Template::render("home", &context)
 }
 
 #[get("/greet/<name>")]
