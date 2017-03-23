@@ -38,18 +38,11 @@ fn css_files(file: PathBuf) -> Option<NamedFile> {
     NamedFile::open(Path::new("css/").join(file)).ok()
 }
 
-// Other files
-#[get("/files/<file..>")]
-fn other_files(file: PathBuf) -> Option<NamedFile> {
-    NamedFile::open(Path::new("static/").join(file)).ok()
-}
-
 fn main() {
     rocket::ignite().mount("/", routes![
         sup, 
         greet,
         javascript_files,
-        css_files,
-        other_files
+        css_files
         ]).launch();
 }

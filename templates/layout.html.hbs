@@ -1,13 +1,18 @@
+<html>
 <head>
     {{> head}}
     {{> pagehead}}
 </head>
+<body>
+    <header>
+        {{> header}}
+    </header>
 
-{{> header}}
+    <p>
+        Directly in layout.html.hbs
+    </p>
+    {{~> page}}
 
-<p>
-    Directly in layout.html.hbs
-</p>
-{{~> page}}
-
-{{> footer}}
+    {{> footer}}
+</body>
+</html>
